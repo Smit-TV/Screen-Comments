@@ -1,0 +1,23 @@
+package kz.aisuluait.a11yevents;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
+import android.view.accessibility.AccessibilityNodeInfo.RangeInfo;
+import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
+import android.view.accessibility.AccessibilityNodeInfo.CollectionItemInfo;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.RangeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.TouchDelegateInfoCompat;
+import android.graphics.Rect;
+typealias Node = AccessibilityNodeInfo;
+typealias NodeCompat = AccessibilityNodeInfoCompat;
+typealias CollectionInfo = CollectionInfoCompat;
+typealias RangeInfo = RangeInfoCompat;
+typealias Action = AccessibilityActionCompat;
+typealias TouchDelegateInfo = TouchDelegateInfoCompat;
+typealias Range = RangeInfo;
+typealias ActionInfo = AccessibilityAction;
+typealias Collection = CollectionInfo;
+typealias CollectionItem = CollectionItemInfo;
+

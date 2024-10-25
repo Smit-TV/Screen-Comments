@@ -1,0 +1,51 @@
+<resources>
+<string name="app_name">Screen comments</string>
+<string name="service_label">Screen comments TalkBack emulator</string>
+<string name="service_label_main">Screen comments</string>
+
+<string name="service_summary">Simple screen reader</string>
+<string name="service_description">
+Emulate TalkBack for all apps.
+</string>
+<string name="service_description_main">
+Simple screen reader for Android.
+</string>
+<string name="service_on">Screen comments enabled</string>
+<string name="service_off">Screen comments disabled</string>
+<string name="state_on">On.</string>
+<string name="state_off">Off.</string>
+<string name="state_checked">Checked.</string>
+<string name="state_not_checked">Not checked.</string>
+<string name="state_enabled">Enabled.</string>
+<string name="state_disable">Disable.</string>
+<string name="state_selected">Selected.</string>
+<string name="state_not_selected">Not selected.</string>
+<string name="role_editable">Input</string>
+<string name="role_password">Password</string>
+<string name="role_button">Button</string>
+<string name="role_checkbox">Checkbox</string>
+<string name="role_switch">Switch</string>
+<string name="role_image">Image</string>
+<string name="role_list">List</string>
+<string name="role_list_item">List item</string>
+<string name="role_table">Table</string>
+<string name="role_slider">Slider</string>
+<string name="role_progress">Progress bar</string>
+<string name="role_webview">Website</string>
+<string name="role_title">Title</string>
+<string name="device_locked">Device locked</string>
+<string name="device_unlocked">Device unlocked</string>
+<string name="no_label">No label</string>
+<string name="window">Window</string>
+<string name="screen_backlight_enabled">Screen backlight enabled</string>
+<string name="screen_backlight_disabled">Screen backlight disabled</string>
+<string name="drag_started">Drag started</string>
+<string name="drag_cancelled">Drag cancelled</string>
+<string name="drag_stopped">Drag stopped</string>
+<string name="collapsed">Collapsed</string>
+<string name="expanded">Expanded</string>
+<string name="opens_pop_up_window">Opens pop-up window</string>
+<string name="keyboard_hidden">Keyboard hidden</string>
+<string name="picture_in_picture_mode">Picture-in-picture mode</string>
+<string name="battery_level">Battery level: </string>
+</resources>

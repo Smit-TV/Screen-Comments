@@ -1,0 +1,622 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Заголовок -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:padding="16dp">
+
+        <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Support chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Сообщения чата -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Пример сообщения -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:text="October 2024 in 12:42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Hello, world!"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Добавь больше сообщений здесь -->
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout><LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:text="October 2024 in 12:42"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+<TextView
+android:text="Hello, world!"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
