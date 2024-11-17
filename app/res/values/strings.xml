@@ -97,6 +97,7 @@ Simple screen reader for Android.
 <string name="action_show_on_screen">Show on Screen</string>    
 <string name="action_show_tooltip">Show Tooltip</string>
 <string name="action_unknown">Unknown</string>
+<string name="empty">Empty.</string>
 
 
 </resources>

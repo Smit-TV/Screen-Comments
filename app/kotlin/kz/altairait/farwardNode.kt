@@ -1,5 +1,6 @@
 package kz.altairait
 import android.os.Bundle;
+import android.util.Log;
 
 import kz.aisuluait.a11yevents.Node
 import kz.aisuluait.a11yevents.ActionInfo;
@@ -137,10 +138,10 @@ return farwardNode(child, true);
 }
 }
 }
-if (node.parent == null
+/*if (node.parent == null
 && (checkLabels(node) || hasAnyClick(node))) {
 return node;
-}
+}*/
 if (!callFromScrollInterpreter && !parentIsPager && parentIsScrollable) {
 scrollInterpretation(node, true)?.let {
 return it;
@@ -149,7 +150,7 @@ return it;
 }
 }
 catch (e: Exception) {
-e.printStackTrace();
+Log.d("scrcerr", "$e из farwardNode");
 }
 // Нам не нужно переберать родительские узлы если функция вызвана как дочерняя
 // isChild == true

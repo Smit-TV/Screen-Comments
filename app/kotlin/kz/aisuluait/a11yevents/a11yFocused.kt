@@ -28,8 +28,7 @@ lastFocusTime = currentTime;
 Global.currentUniqueId = getUniqueId(node);
 Global.lastUniqueId = Global.currentUniqueId;
 val window = node.window;
-if (window.type != Window.TYPE_ACCESSIBILITY_OVERLAY
-&& node.packageName != Global.cxt.packageName) {
+if (window.type != Window.TYPE_ACCESSIBILITY_OVERLAY) {
 Global.node = node;
 }
 getLog(node);

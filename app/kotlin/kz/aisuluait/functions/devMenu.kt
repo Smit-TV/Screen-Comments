@@ -41,7 +41,7 @@ LogUtils.getChilds(node);
 "";
 }
 val topBar = if (intent == "info" || intent == "refresh") {
-"${if (node.parent != null) "parent" else "isRootView: true"};";
+"${if (node.parent != null) "parent" else "isRootView: true"}; ${if (intent == "refresh") "" else "refresh"};";
 } else { ""; }
 val log = "$topBar$result";
 val items = log.split(";");

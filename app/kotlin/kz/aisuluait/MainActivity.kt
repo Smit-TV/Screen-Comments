@@ -17,16 +17,16 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_menu)
+        setContentView(R.layout.activity_main)
 
-/*        listView = findViewById(R.id.listView)
+        listView = findViewById(R.id.listView)
 
         // Создание списка с 1000 элементами
         val items = List(1000) { "Item ${it + 1}" }
 
         // Настройка пользовательского адаптера для ListView
         val adapter = CustomAdapter(this, R.layout.list_item, items)
-        listView.adapter = adapter*/
+        listView.adapter = adapter
     }
 
     private class CustomAdapter(context: Context, layout: Int,items: List<String>) :

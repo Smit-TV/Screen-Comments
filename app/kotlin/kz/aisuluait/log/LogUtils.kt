@@ -25,21 +25,37 @@ return log;
 * Значения intent
 * all - Все действия например: ACTION_CLICK это нажатие 
 * special - Действия определенные разработчиками (В формате "Метка")
+* ids - Получите список id
 * default - Стандартный формат возврата (В формате "ярлык название действия: id")
 */
-fun getActions(node: Node, intent: String = "default"): String {
+// getIds - Получите список id для указанного intent
+fun getActions(node: Node, intent: String = "default", getIds: Boolean = false): String {
 val actions = node.actionList ?: mutableListOf<ActionInfo>();
 var result = "";
 for (action in actions) {
 val id = action.id;
 val userLabel = action.label;
 var label = "";
-if (intent == "default") {
+if (intent == "ids") {
+label = "$id";
+} else if (intent == "default") {
 label = "$userLabel ${getActionNameById(id)}: $id";
 } else if (intent == "special") {
+if (!getIds) {
 label = "${userLabel ?: ""}";
 } else {
-label = getActionLabelAliasById(id);
+label = if (userLabel != null) {
+"$id";
+} else { ""; }
+}
+} else if (intent == "all") {
+if (!getIds) {
+label = "${userLabel ?: getActionLabelAliasById(id)}";
+} else {
+label = "$id";
+}
+} else {
+throw IllegalArgumentException("Указано неверное значение intent в LogUtils#getActions. Указано: getActions(node, $intent, $getIds");
 }
 result = if (result != "") "$result;$label" else "$label";
 }

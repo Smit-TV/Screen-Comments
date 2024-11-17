@@ -43,7 +43,7 @@ fun getOrExecuteAction(action: String, cxt: Context): Any? {
 "notification-volume-down" -> setVolume("volume-down", cxt, AudioManager.STREAM_NOTIFICATION);
 "dev-menu" -> devMenu();
 "all-actions" -> actionsMenu(Global.node, "all");
-"special-actions" -> actionsMenu(Global.node, "special");
+"special-actions" -> actionsMenu(Global.node);
 "backward-node" -> {
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(false) ?: return "false";

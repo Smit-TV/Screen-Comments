@@ -9,6 +9,7 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.util.Log;
 import kz.aisuluait.R;
+import kz.aisuluait.feedback.play;
 import kz.aisuluait.log.LogUtils;
 import kz.aisuluait.a11yevents.Node;
 import kz.aisuluait.a11yevents.Global;
@@ -27,6 +28,14 @@ try {
 val menu = Global.layoutInflater.inflate(R.layout.app_menu, null);
 val listItems = menu.findViewById<ListView>(R.id.list);
 val result = LogUtils.getActions(node, intent);
+if (result.isEmpty()) {
+Global.tts.speak(cxt.getString(R.string.empty));
+val emptySound = Global.prefs.getString("empty_sound", null);
+play(emptySound ?: R.raw.end);
+return;
+}
+// true указывает что нужно получить только id
+val ids = LogUtils.getActions(node, intent, true).split(";");
 val log = "$result";
 val items = log.split(";");
 val adapter = ArrayAdapter(cxt, R.layout.list_item, items);
@@ -59,17 +68,9 @@ hideView(view);
 
 listItems.setOnItemClickListener {
 parent, viewInstance, position, id ->
-if (viewInstance is TextView) {
-val view = (viewInstance as TextView);
-val text = view.text;
+val action = ids[position].toInt();
 closeBtn.performClick();
-val actionSplit = text.split(": ");
-val action = actionSplit.last().toInt();
-if (action != null) {
-val result = node.performAction(action.toInt());
-Toast.makeText(Global.windowContext, "Execute status: $result", Toast.LENGTH_SHORT).show();
-}
-}
+node.performAction(action);
 }
 setViewOnScreen(view);
 }
