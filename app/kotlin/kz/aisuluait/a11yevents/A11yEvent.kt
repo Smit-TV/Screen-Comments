@@ -23,7 +23,7 @@ Event.TYPE_VIEW_HOVER_ENTER -> {
 hoverEnter(node, cxt);
 }
 Event.TYPE_VIEW_ACCESSIBILITY_FOCUSED -> {
-a11yFocused(node);
+a11yFocused(event);
 }
 Event.TYPE_VIEW_CLICKED,
 Event.TYPE_VIEW_LONG_CLICKED -> {

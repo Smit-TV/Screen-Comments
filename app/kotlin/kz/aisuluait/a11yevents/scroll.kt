@@ -6,6 +6,6 @@ fun scroll(event: Event) {
 if (Global.scrollInitByGesture) {
 Global.scrollInitByGesture = false;
 val node = event.source ?: return;
-farwardNode(node, false, null, 1)?.performAction(Node.ACTION_ACCESSIBILITY_FOCUS);
+farwardNode(node, false, null, 0, true)?.performAction(Node.ACTION_ACCESSIBILITY_FOCUS);
 }
 }

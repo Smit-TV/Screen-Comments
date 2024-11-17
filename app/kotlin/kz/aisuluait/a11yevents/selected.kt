@@ -3,7 +3,7 @@ import kz.altairait.farwardNode;
 import kz.aisuluait.focus.getFocusableNode;
 fun selected(node: Node?) {
 node ?: return;
-return;
+return;/*
 if (!node.isVisibleToUser
 || !node.window.isActive) {
 return;
@@ -20,5 +20,5 @@ Node.ACTION_ACCESSIBILITY_FOCUS);
 } else if (node.childCount > 0) {
 farwardNode(node, true)?.performAction(
 Node.ACTION_ACCESSIBILITY_FOCUS);
-}
+}*/
 }

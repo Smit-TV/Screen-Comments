@@ -4,6 +4,7 @@ import kz.aisuluait.R;
 import kz.aisuluait.a11yevents.Node;
 import kz.aisuluait.a11yevents.NodeCompat;
 import kz.aisuluait.a11yevents.Action;
+import kz.aisuluait.a11yevents.Event;
 import kz.aisuluait.focus.checkLabels;
 /* *
 * @param (NodeCompat): node - Основной узел для получения текста.
@@ -14,6 +15,7 @@ import kz.aisuluait.focus.checkLabels;
 fun parseNode(node: NodeCompat,
 nodeInfo: Node,
 cxt: Context,
+event: Event,
 isChild: Boolean = false,
 isSecondCall: Boolean = false): String? {
 try {
@@ -26,9 +28,9 @@ val checkLabels = checkLabels(childInfo);
 if (isSecondCall
 && isReadable(child)) {
 if (child.childCount == 0) {
-textToReturn = "$textToReturn ${NodeProperties(child, cxt, true).getText().trim()}";
+textToReturn = "$textToReturn ${NodeProperties(child, event, cxt, true).getText().trim()}";
 } else {
-textToReturn = "$textToReturn ${parseNode(child, childInfo, cxt, true, true) ?: ""}";
+textToReturn = "$textToReturn ${parseNode(child, childInfo, cxt, event, true, true) ?: ""}";
 }
 continue;
 }
@@ -46,21 +48,21 @@ if ((checkLabels
 && child.rangeInfo == null)
 || child.stateDescription != null && !child.isClickable
 && child.rangeInfo == null) {
-textToReturn = "$textToReturn ${NodeProperties(child, cxt, true).getText().trim()}";
+textToReturn = "$textToReturn ${NodeProperties(child, event, cxt, true).getText().trim()}";
 } else  if (child.childCount > 0
 && actions
 && child.rangeInfo == null
 && !checkLabels) {
-textToReturn = "$textToReturn ${parseNode(child, childInfo, cxt, true) ?: ""}";
+textToReturn = "$textToReturn ${parseNode(child, childInfo, cxt, event, true) ?: ""}";
 }
 }
 }
-val nodeText = NodeProperties(node, cxt);
+val nodeText = NodeProperties(node, event, cxt);
 val finalText =
 ("${nodeText.collapse}\n${nodeText.opensPopUpWindow}\n${nodeText.isSelected} ${nodeText.stateDescription}\n$textToReturn\n${nodeText.textContent}\n${nodeText.hintText}\n${nodeText.isEnabled}\n${nodeText.roleDescription}").trim();
 if (finalText.isEmpty()) {
 if (!isChild && !isSecondCall) {
-return parseNode(node, nodeInfo, cxt, false, true);
+return parseNode(node, nodeInfo, cxt, event, false, true);
 }
 return null;
 } else {

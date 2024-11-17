@@ -17,6 +17,7 @@ import android.view.ViewConfiguration;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityWindowInfo;
@@ -44,9 +45,15 @@ var serviceStarted = false;
 override fun onServiceConnected() {
 super.onCreate();
 super.onServiceConnected();
-cxt = this;
+setCacheEnabled(true);
+cxt = applicationContext;
 Global.cxt = cxt;
+Global.rootView = Global.getRootLayout();
+
 Global.windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager;
+val defaultDisplay = Global.windowManager.defaultDisplay;
+Global.windowContext = createWindowContext(defaultDisplay, WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY, null);
+Global.layoutInflater = LayoutInflater.from(this);
 Global.batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager;
 Global.tts = TTS(cxt, cxt.getString(R.string.service_on));
 Global.audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager;
@@ -98,7 +105,6 @@ return false;
 }
 private var endNode = 0;
 override fun onGesture(gesture: Int): Boolean {
-Thread {
 try {
 //Global.node = findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY) ?: Global.node;
 // Однажды я включил talkback
@@ -159,7 +165,6 @@ farwardNode(Global.node ?: throw Exception(), true);
 }
 }
 catch (e: Exception) {}
-}.start();
 return true;
 }
 fun nextWindow(direction: Boolean = true, isChild: Boolean= false): Boolean {
@@ -218,7 +223,7 @@ if (index < 0) {
 if (direction) {
 index++;
 } else {
-index--;
+--index;
 }
 if (item.isAccessibilityFocused) {
 currentWindowFound = true;

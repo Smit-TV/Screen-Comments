@@ -10,7 +10,7 @@ import kz.aisuluait.feedback.play;
 
 // Переход к предыдущему узлу
 
-fun backwardNode(node: Node, isChild: Boolean = false, childForComparison: Node? = null, callCount: Int = 0): Node? {
+fun backwardNode(node: Node, isChild: Boolean = false, childForComparison: Node? = null, callCount: Int = 0, callFromScrollInterpreter: Boolean = false): Node? {
 if (isHtmlElement(node)) {
 return forwardHtmlElement(node);
 }
@@ -70,13 +70,12 @@ ActionInfo.ACTION_SCROLL_TO_POSITION.id, args
 continue;
 }
 if (isScrollable(child)) {
-if (child.childCount == 0) {
-continue;
-}
+if (child.childCount > 0) {
 backwardNode(child, true)?.let {
 return it;
 }
 continue;
+}
 }
 val checker = checkNotFocusableNode(child);
 val hasAnyClick = hasAnyClick(child);
@@ -134,14 +133,13 @@ if (child.childCount > 0 && !checker) {
 backwardNode(child, true)?.let {
 return it;
 }
-if (checkLabels && parent == null
-|| hasAnyClick || hasAnyFocus) {
+if (checkLabels && parent == null) {
 return child;
 }
 }
 }
 }
-if (!node.isAccessibilityFocused) {
+if (!node.isAccessibilityFocused && node.isVisibleToUser) {
 val checkLabels = checkLabels(node);
 val hasAnyClick = hasAnyClick(node);
 val hasAnyFocus = hasAnyFocus(node);
@@ -162,20 +160,8 @@ if (node.parent == null
 && (checkLabels(node) || hasAnyClick(node))) {
 return node;
 }
-val a11yFocusedNode = Global.getA11yFocusedNode();
-
-if (!parentIsPager && callCount < 2 && parentIsScrollable
-&& node.performAction(Node.ACTION_SCROLL_BACKWARD)
-&& node.refresh()) {
-// Иногда список прокручивается так что сфокусированого узла уже нет
-/*if (a11yFocusedNode == null
-&& (parentIsCollection || parentIsScrollable)) {
-return backwardNode(node, true);
-}*/
-
-//Global.node?.refresh();
-//Thread.sleep(30);
-return backwardNode(node, false, Global.getA11yFocusedNode(), callCount+1);
+if (!parentIsPager && parentIsScrollable) {
+scrollInterpretation(node, false);
 }
 }
 catch (e: Exception) {

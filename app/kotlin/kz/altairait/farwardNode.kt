@@ -10,7 +10,7 @@ import kz.aisuluait.feedback.play;
 
 // Переход к следующему узлу
 
-fun farwardNode(node: Node, isChild: Boolean = false, childForComparison: Node? = null, callCount: Int = 0): Node? {
+fun farwardNode(node: Node, isChild: Boolean = false, childForComparison: Node? = null, callCount: Int = 0, callFromScrollInterpreter: Boolean = false): Node? {
 if (isHtmlElement(node)) {
 return forwardHtmlElement(node);
 }
@@ -30,9 +30,10 @@ ActionInfo.ACTION_SCROLL_TO_POSITION
 ) != -1;
 for (childId in 0 until node.childCount) {
 //node.refresh();
-val child = node.getChild(childId) ?: return null;
+val child = node.getChild(childId) ?: break;
 if (child.isAccessibilityFocused
-|| child.equals(childForComparison)) {
+|| !foundFocused
+&& childForComparison != null && child.equals(childForComparison)) {
 foundFocused = true;
 continue;
 }
@@ -44,7 +45,7 @@ return it;
 }
 if (foundFocused
 && (child.isVisibleToUser
-|| child.performAction(ActionInfo.ACTION_SHOW_ON_SCREEN.id) == true
+//|| child.performAction(ActionInfo.ACTION_SHOW_ON_SCREEN.id) == true
 || parentIsScrollableToPosition
 )) {
 val childCollectionItem = child.collectionItemInfo;
@@ -70,13 +71,12 @@ ActionInfo.ACTION_SCROLL_TO_POSITION.id, args
 continue;
 }
 if (isScrollable(child)) {
-if (child.childCount == 0) {
-continue;
-}
+if (child.childCount > 0) {
 farwardNode(child, true)?.let {
 return it;
 }
 continue;
+}
 }
 val checker = checkNotFocusableNode(child);
 val hasAnyClick = hasAnyClick(child);
@@ -141,20 +141,11 @@ if (node.parent == null
 && (checkLabels(node) || hasAnyClick(node))) {
 return node;
 }
-val a11yFocusedNode = Global.getA11yFocusedNode();
+if (!callFromScrollInterpreter && !parentIsPager && parentIsScrollable) {
+scrollInterpretation(node, true)?.let {
+return it;
+}
 
-if (!parentIsPager && callCount < 2 && parentIsScrollable
-&& node.performAction(Node.ACTION_SCROLL_FORWARD)
-&& node.refresh()) {
-// Иногда список прокручивается так что сфокусированого узла уже нет
-/*if (a11yFocusedNode == null
-&& (parentIsCollection || parentIsScrollable)) {
-return farwardNode(node, true);
-}*/
-
-//Global.node?.refresh();
-//Thread.sleep(30);
-return farwardNode(node, false, Global.getA11yFocusedNode(), callCount+1);
 }
 }
 catch (e: Exception) {
@@ -162,7 +153,7 @@ e.printStackTrace();
 }
 // Нам не нужно переберать родительские узлы если функция вызвана как дочерняя
 // isChild == true
-if (isChild) {
+if (isChild || callFromScrollInterpreter) {
 return null;
 }
 return farwardNode(node.parent ?: run {

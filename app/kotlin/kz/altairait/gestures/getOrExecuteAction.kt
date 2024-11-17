@@ -6,6 +6,7 @@ import android.media.AudioManager;
 import kz.aisuluait.a11yevents.Node;
 import kz.aisuluait.a11yevents.Global;
 import kz.aisuluait.functions.*;
+import kz.aisuluait.R;
 import kz.altairait.utils.*;
 fun getOrExecuteAction(action: String, cxt: Context): Any? {
     return when (action) {
@@ -40,6 +41,9 @@ fun getOrExecuteAction(action: String, cxt: Context): Any? {
 "alarm-volume-down" -> setVolume("volume-down", cxt, AudioManager.STREAM_ALARM);
 "notification-volume-up" -> setVolume("volume-up", cxt, AudioManager.STREAM_NOTIFICATION);
 "notification-volume-down" -> setVolume("volume-down", cxt, AudioManager.STREAM_NOTIFICATION);
+"dev-menu" -> devMenu();
+"all-actions" -> actionsMenu(Global.node, "all");
+"special-actions" -> actionsMenu(Global.node, "special");
 "backward-node" -> {
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(false) ?: return "false";
@@ -55,19 +59,17 @@ return null;
 }
 return "node_is_invalid";
 }
-"farward-node" -> {
+"forward-node" -> {
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(true) ?: run {
-if (Global.searchNodeInterrupt) {
+if (Global.searchNodeInterrupt || Global.scrollInitByGesture) {
 return null;
 }
 return "true"; // true указывает направление в поиске следующего окна
 }
-/*if (node.isAccessibilityFocused) {
-// Функции farwardNode и backwardNode проверяют значение переменной для принятия решения
-Global.scrollInitByGesture = true;
-node = nodeByDirection(true) ?: return "true";
-}*/
+if (node.isAccessibilityFocused || Global.scrollInitByGesture) {
+return null;
+}
 val result = node.performAction(Node.ACTION_ACCESSIBILITY_FOCUS);
 // Это защита от вибрации выполненого жеста
 if (result) {

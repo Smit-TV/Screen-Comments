@@ -6,9 +6,9 @@ import kz.altairait.backwardNode;
 import kz.altairait.utils.getUniqueId;
 // backward -> false.
 // farward -> true
-fun nodeByDirection(direction: Boolean): Node? {
+fun nodeByDirection(direction: Boolean, node: Node? = null): Node? {
 try {
-val node = Global.getA11yFocusedNode() ?: return null;
+val node = node ?: Global.node ?:  Global.getA11yFocusedNode() ?: return null;
 //node.refresh();
 //node?.recycle();
 if (direction) {

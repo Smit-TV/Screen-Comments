@@ -2,26 +2,27 @@ package kz.aisuluait.compositor;
 import android.content.Context;
 import kz.aisuluait.R;
 import kz.aisuluait.a11yevents.Node;
+import kz.aisuluait.a11yevents.Event;
 import kz.aisuluait.a11yevents.NodeCompat;
 import kz.aisuluait.a11yevents.Global;
+import kz.aisuluait.focus.checkLabels;
 import kz.altairait.getParam;
-fun compositor(nodeInfo: Node, cxt: Context): String {
+fun compositor(nodeInfo: Node, event: Event, cxt: Context): String {
 //return ""
 nodeInfo.refresh();
 val node = NodeCompat.wrap(nodeInfo);
 var returnText: String? = null;
-if (node.contentDescription != null
-|| node.text != null) {
-returnText = NodeProperties(node, cxt).getText();
+if (checkLabels(nodeInfo)) {
+returnText = NodeProperties(node, event, cxt).getText();
 } else if (node.childCount > 0) {
-returnText = parseNode(node, nodeInfo, cxt);
+returnText = parseNode(node, nodeInfo, cxt, event);
 } else {
 if (returnText?.isEmpty() != false) {
 returnText = Global.prefs.getString("label_${node.packageName}_${node.viewIdResourceName ?: ""}", null);
 if (returnText?.isEmpty() != false) {
 returnText = cxt.getString(R.string.no_label);
 }
-returnText = NodeProperties(node, cxt, false, returnText).getText();
+returnText = NodeProperties(node, event, cxt, false, returnText).getText();
 }
 }
 

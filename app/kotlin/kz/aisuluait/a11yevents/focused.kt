@@ -3,6 +3,7 @@ import kz.altairait.farwardNode;
 import kz.aisuluait.focus.getFocusableNode;
 private var lastEventTime = 0L;
 fun focused(node: Node?, eventTime: Long) {
+return/*
 node ?: return;
 Thread {
 try {
@@ -34,4 +35,4 @@ Node.ACTION_ACCESSIBILITY_FOCUS);
 }
 catch (e: Exception) {}
 }.start();
-}
+*/}

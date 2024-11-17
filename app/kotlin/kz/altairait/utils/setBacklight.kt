@@ -22,19 +22,22 @@ if (state) {
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
-            else
-                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+or WindowManager.LayoutParams.FLAG_SECURE
+or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+or WindowManager.LayoutParams.FLAG_FULLSCREEN
                     or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                     or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                     or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
             PixelFormat.TRANSPARENT
         )
+if (overlayView == null) {
+overlayView = View(Global.cxt);
+}
 
-        overlayView = View(Global.cxt)
         overlayView?.setBackgroundColor(Color.BLACK)
 
         Global.windowManager.addView(overlayView, params)

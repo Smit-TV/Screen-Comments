@@ -1,26 +1,45 @@
 package kz.aisuluait.compositor;
 import android.content.Context;
 import kz.aisuluait.R;
+import kz.aisuluait.a11yevents.Event;
 import kz.altairait.getRole;
 import kz.aisuluait.a11yevents.NodeCompat;
 
 // Содержит свойства узла в доступном для пользователя виде
 class NodeProperties(private val node: NodeCompat,
+private val event: Event?,
 private val cxt: Context, 
 private val isChild: Boolean = false, 
-private val userLabel: String? = null) {
+private val userLabel: String? = null,
+private val childIndex: Int = 0) {
 private val className = node.className ?: "";
 // Открывает ли узел всплывающее окно, popup
 val opensPopUpWindow = if (node.canOpenPopup()) cxt.getString(R.string.opens_pop_up_window) else "";
 //  Состояния свернуто и развернуто
 val collapseState = getCollapseState(node);
 val collapse = if (collapseState is Int) cxt.getString(collapseState) else "";
+// Этот узел является меткой для текущего узла (node)
+val labeledBy = node.labeledBy;
 // Метка элемента
-val contentDescription = if (node.contentDescription?.isNotBlank() == true) {
+val label = if (labeledBy != null && !node.equals(labeledBy)) {
+NodeProperties(labeledBy, null, cxt).contentDescription;
+} else { " " }
+// Это для тех кто заполнил event.text и event.contentDescription но в узле нету этого
+val t = event?.text?.getOrNull(childIndex) ?: "";
+val c = event?.contentDescription ?: "";
+val contentDescription: CharSequence = (if (label.isNotBlank()) {
+label;
+} else if (node.contentDescription?.isNotBlank() == true) {
 node.contentDescription;
 } else if (node.text?.isNotBlank() == true) {
 node.text;
-} else { ""; }
+} else if (t.isNotBlank()) {
+t;
+} else if (c.isNotBlank()) {
+c;
+} else {
+node.tooltipText ?: "";
+}).toString();
 // Обрезаем текст
 val textContent = if (!contentDescription.isEmpty()) {
 "${contentDescription.trim()}\n";
@@ -90,14 +109,16 @@ val isSelected = if ((node.isSelected
 // Для полей ввода
 
 val hintText = if (node.hintText != null
-&& node.text != node.hintText) {
+&& !node.isShowingHintText) {
 "\n${node.hintText}";
 } else {
 "";
 }
+val rowTitle = (node.collectionItemInfo?.rowTitle ?: "").toString();
+val columnTitle = (node.collectionItemInfo?.columnTitle ?: "").toString();
 // Сборщик текста
 fun getText(): String {
-val textToReturn = ("$collapse\n $stateDescription $isSelected ${userLabel ?: textContent} $hintText $isEnabled $opensPopUpWindow\n $roleDescription").trim();
+val textToReturn = ("$collapse\n $stateDescription $isSelected ${userLabel ?: textContent} $hintText $isEnabled $opensPopUpWindow\n $roleDescription \n$rowTitle\n $columnTitle").trim();
 if (!textToReturn.isEmpty()) {
 return "$textToReturn\n";
 }
