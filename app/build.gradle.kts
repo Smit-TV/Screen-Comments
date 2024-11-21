@@ -20,7 +20,7 @@ javaMaxHeapSize = "4G"
 
     defaultConfig {
         applicationId = "kz.aisuluait.screen.comments"
-        minSdk = 34
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

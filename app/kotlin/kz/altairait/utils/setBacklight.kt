@@ -17,6 +17,8 @@ val finalState = if (firstCall) currentState else currentState != true;
 onBacklight(finalState);
 }
 private var overlayView: View? = null;
+// state true Включить
+// state false Выключить
 fun onBacklight(state: Boolean) {
 if (state) {
         val params = WindowManager.LayoutParams(

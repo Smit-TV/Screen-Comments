@@ -2,7 +2,7 @@ package kz.aisuluait.a11yevents;
 import kz.aisuluait.feedback.vibrate;
 import kz.altairait.farwardNode;
 fun scroll(event: Event) {
-//return;
+return;
 if (Global.scrollInitByGesture) {
 Global.scrollInitByGesture = false;
 val node = event.source ?: return;

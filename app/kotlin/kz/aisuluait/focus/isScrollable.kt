@@ -1,4 +1,5 @@
 package kz.aisuluait.focus;
+import android.os.Build;
 import kz.aisuluait.a11yevents.Node;
 import kz.aisuluait.a11yevents.ActionInfo;
 import android.util.Log;
@@ -40,7 +41,7 @@ ActionInfo.ACTION_SCROLL_RIGHT
 || actions.indexOf(
 ActionInfo.ACTION_SCROLL_TO_POSITION
 ) != -1
-|| actions.indexOf(
+|| Build.VERSION.SDK_INT >= 34 && actions.indexOf(
 ActionInfo.ACTION_SCROLL_IN_DIRECTION
 ) != -1) {
 return true;

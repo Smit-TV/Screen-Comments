@@ -33,10 +33,6 @@ label;
 node.contentDescription;
 } else if (node.text?.isNotBlank() == true) {
 node.text;
-} else if (t.isNotBlank()) {
-t;
-} else if (c.isNotBlank()) {
-c;
 } else {
 node.tooltipText ?: "";
 }).toString();

@@ -23,7 +23,7 @@ private var views = mutableListOf<LinearLayout>();
 * parent - Получите родительский узел
 */
 
-fun devMenu(node: Node? = Global.node, intent: String = "info") {
+fun devMenu(node: Node? = Global.nodeForDev, intent: String = "info") {
 node ?: return;
 val cxt = Global.cxt;
 try {
@@ -41,7 +41,7 @@ LogUtils.getChilds(node);
 "";
 }
 val topBar = if (intent == "info" || intent == "refresh") {
-"${if (node.parent != null) "parent" else "isRootView: true"}; ${if (intent == "refresh") "" else "refresh"};";
+"${if (node.parent != null) "parent" else "isRootView: true"}${if (intent == "refresh") "" else "; refresh"};";
 } else { ""; }
 val log = "$topBar$result";
 val items = log.split(";");

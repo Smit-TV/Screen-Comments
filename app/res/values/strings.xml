@@ -98,6 +98,14 @@ Simple screen reader for Android.
 <string name="action_show_tooltip">Show Tooltip</string>
 <string name="action_unknown">Unknown</string>
 <string name="empty">Empty.</string>
+<string name="read_from_next_element">Read from next element.</string>
+<string name="main_menu">Main menu</string>
+<string name="next_window">Next window</string>
+<string name="previous_window">Previous window</string>
+<string name="turn_on_screen_backlight">Turn on screen backlight</string>
+<string name="turn_off_screen_backlight">Turn off screen backlight</string>
+<string name="app_settings">App settings</string>
+<string name="tts_settings">TTS settings</string>
 
 
 </resources>

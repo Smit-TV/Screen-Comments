@@ -40,13 +40,14 @@ continue;
 }
 if (foundFocused && !child.isVisibleToUser
 && child.childCount > 0) {
-farwardNode(child, true, null, 0/*, true*/)?.let {
+farwardNode(child, true, null, 0)?.let {
 return it;
 }
 }
+
 if (foundFocused
 && (child.isVisibleToUser
-//|| child.performAction(ActionInfo.ACTION_SHOW_ON_SCREEN.id) == true
+|| child.performAction(ActionInfo.ACTION_SHOW_ON_SCREEN.id) == true
 || parentIsScrollableToPosition
 )) {
 val childCollectionItem = child.collectionItemInfo;

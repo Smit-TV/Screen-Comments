@@ -28,11 +28,14 @@ lastFocusTime = currentTime;
 Global.currentUniqueId = getUniqueId(node);
 Global.lastUniqueId = Global.currentUniqueId;
 val window = node.window;
-if (window.type != Window.TYPE_ACCESSIBILITY_OVERLAY) {
 Global.node = node;
+// Узел для отладки
+if (window.type != Window.TYPE_ACCESSIBILITY_OVERLAY) {
+Global.nodeForDev = node;
 }
 getLog(node);
 getLog(node.parent ?: return, "scrcparent");
 /*getLog(node.parent?.parent ?: return);*/
+android.util.Log.d("scrcerr", "Warning! last event ${Global.lastEvent}");
 }
 

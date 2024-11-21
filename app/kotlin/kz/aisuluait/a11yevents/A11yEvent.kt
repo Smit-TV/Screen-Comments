@@ -34,18 +34,7 @@ scroll(event);
 }
 Event.TYPE_TOUCH_INTERACTION_START -> {
 Global.tts.stop();
-}
-Event.TYPE_TOUCH_INTERACTION_END -> {
-Global.lastUniqueId = "";
-try {
-val node = Global.node ?: return;
-if (node.isTextEntryKey == true
-|| node.window.type == Window.TYPE_INPUT_METHOD) {
-Global.node?.performAction(
-Node.ACTION_CLICK);
-}
-}
-catch (e: Exception) {}
+Global.readFromNextElementInterrupt = true;
 }
 Event.TYPE_NOTIFICATION_STATE_CHANGED -> {
 notificationReader(event, cxt);

@@ -44,6 +44,12 @@ fun getOrExecuteAction(action: String, cxt: Context): Any? {
 "dev-menu" -> devMenu();
 "all-actions" -> actionsMenu(Global.node, "all");
 "special-actions" -> actionsMenu(Global.node);
+"main-menu" -> mainMenu();
+"read-from-next-element" -> readFromNextElement();
+"next-window" -> nextWindow();
+"previous-window" -> previousWindow();
+"open-app-settings" -> openAppSettings();
+"open-tts-settings" -> openTTSSettings();
 "backward-node" -> {
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(false) ?: return "false";
@@ -62,14 +68,14 @@ return "node_is_invalid";
 "forward-node" -> {
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(true) ?: run {
-if (Global.searchNodeInterrupt || Global.scrollInitByGesture) {
+//if (Global.searchNodeInterrupt || Global.scrollInitByGesture) {
 return null;
-}
+//}
 return "true"; // true указывает направление в поиске следующего окна
 }
-if (node.isAccessibilityFocused || Global.scrollInitByGesture) {
+/*if (node.isAccessibilityFocused || Global.scrollInitByGesture) {
 return null;
-}
+}*/
 val result = node.performAction(Node.ACTION_ACCESSIBILITY_FOCUS);
 // Это защита от вибрации выполненого жеста
 if (result) {
@@ -78,6 +84,7 @@ return null;
 return "node_is_invalid";
 }
         else -> {
+return null;
 if (action is String
 && action.isNotEmpty()) {
 return action;

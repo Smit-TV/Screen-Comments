@@ -19,6 +19,12 @@ import kz.altairait.service.*;
 import kz.altairait.ServiceInterface;
  class Global {
 companion object {
+// Узел для отладки в dev menu
+lateinit var nodeForDev: Node;
+// Обратная связь о том что метка узла прочитана
+var readFromNextElement = false;
+// Прерывание для чтения со следующего элемента
+var readFromNextElementInterrupt = false;
 
 // Контекст окна
 lateinit var windowContext: Context;

@@ -2,6 +2,7 @@ package com.google.android.marvin.talkback;
 import android.util.Log;
 import android.os.BatteryManager;
 import android.os.VibrationEffect;
+import android.os.Build;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -45,14 +46,20 @@ var serviceStarted = false;
 override fun onServiceConnected() {
 super.onCreate();
 super.onServiceConnected();
+if (Build.VERSION.SDK_INT >= 33) {
 setCacheEnabled(true);
+}
 cxt = applicationContext;
 Global.cxt = cxt;
 Global.rootView = Global.getRootLayout();
 
 Global.windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager;
 val defaultDisplay = Global.windowManager.defaultDisplay;
-Global.windowContext = createWindowContext(defaultDisplay, WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY, null);
+Global.windowContext = if (Build.VERSION.SDK_INT >= 31) {
+createWindowContext(defaultDisplay, WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY, null);
+} else {
+this;
+}
 Global.layoutInflater = LayoutInflater.from(this);
 Global.batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager;
 Global.tts = TTS(cxt, cxt.getString(R.string.service_on));
@@ -105,23 +112,9 @@ return false;
 }
 private var endNode = 0;
 override fun onGesture(gesture: Int): Boolean {
+// Прерываем чтение со след. элем.
+Global.readFromNextElementInterrupt = true;
 try {
-//Global.node = findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY) ?: Global.node;
-// Однажды я включил talkback
-// и затем я включил наш проект и выключил talkback
-// жест приходил а нажатие не работало хотя флага
-// на обработку нажатий мы не добавляли, это была ошибка системы.
-// также это может быть при флаге motionevents
-if (gesture == AccessibilityService.GESTURE_DOUBLE_TAP) {
-Global.node?.performAction(
-AccessibilityNodeInfo.ACTION_CLICK) ?: false;
-throw Exception();
-}
-if (gesture == AccessibilityService.GESTURE_DOUBLE_TAP_AND_HOLD) {
-Global.node?.performAction(
-AccessibilityNodeInfo.ACTION_LONG_CLICK) ?: false;
-throw Exception();
-}
 val action = gestureEvent(gesture);
 val execute: Any? = getOrExecuteAction(action, this) ?: throw Exception();
 if (execute is Int) {
@@ -370,27 +363,8 @@ val eventType = event.eventType;
 var stop = false;
 when (eventType) {
 
-// Для использующих системный жест
-AccessibilityEvent.TYPE_TOUCH_EXPLORATION_GESTURE_START,
-AccessibilityEvent.TYPE_VIEW_CLICKED,
-AccessibilityEvent.TYPE_VIEW_LONG_CLICKED,
-AccessibilityEvent.TYPE_VIEW_SCROLLED -> {
-if (usingSystemGesture) {
-enableFlag(AccessibilityServiceInfo.FLAG_REQUEST_TOUCH_EXPLORATION_MODE);
-// Нужно в момент когда необходимо описать изображение а фокус не устанавливается на нем
-// Пример: whatsApp в аудиозвонке. Не фокусируется на аватарке
-event.source?.performAction(
-AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS);
-return;
-}
-}
-
 AccessibilityEvent.TYPE_WINDOWS_CHANGED -> {
 windowsChanged(event);
-return;
-}
-AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED -> {
-windowStateChanged(event);
 return;
 }
 // Не нужные события
