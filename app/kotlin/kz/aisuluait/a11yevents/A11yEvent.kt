@@ -48,6 +48,7 @@ windowContentChanged(event);
 Event.TYPE_VIEW_SELECTED -> {
 selected(node);
 }
+Event.TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY -> reading(event);
 }
 Global.lastEvent = event;
 getEventLog(event);

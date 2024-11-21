@@ -8,8 +8,25 @@ import kz.aisuluait.a11yevents.Global;
 import kz.aisuluait.functions.*;
 import kz.aisuluait.R;
 import kz.altairait.utils.*;
-fun getOrExecuteAction(action: String, cxt: Context): Any? {
+fun getOrExecuteAction(action: String, cxt: Context = Global.cxt): Any? {
     return when (action) {
+"next-nav-type" -> SpeedNav.nextNavType();
+"previous-nav-type" -> SpeedNav.previousNavType();
+"next-nav-action" -> SpeedNav.nextNavAction();
+"previous-nav-action" -> SpeedNav.previousNavAction();
+
+    "next-symbol" -> nextSymbol()
+    "next-line" -> nextLine()
+    "next-word" -> nextWord()
+    "next-page" -> nextPage()
+    "next-paragraph" -> nextParagraph()
+    
+    "previous-symbol" -> previousSymbol()
+    "previous-line" -> previousLine()
+    "previous-word" -> previousWord()
+    "previous-page" -> previousPage()
+    "previous-paragraph" -> previousParagraph()
+
         "open-app-list" -> AccessibilityService.GLOBAL_ACTION_ACCESSIBILITY_ALL_APPS
         "dpad-center" -> AccessibilityService.GLOBAL_ACTION_DPAD_CENTER
         "dpad-left" -> AccessibilityService.GLOBAL_ACTION_DPAD_LEFT
@@ -69,7 +86,7 @@ return "node_is_invalid";
 // Иногда может вернуться уже сфокусированный узел
 var node = nodeByDirection(true) ?: run {
 //if (Global.searchNodeInterrupt || Global.scrollInitByGesture) {
-return null;
+//return null;
 //}
 return "true"; // true указывает направление в поиске следующего окна
 }

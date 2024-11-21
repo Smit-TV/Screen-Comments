@@ -127,12 +127,6 @@ if (execute is Int
 vibrate(52);
 }
 if (execute is String
-&& execute == "node_is_invalid") {
-vibrate(100);
-endNode = 2;
-throw Exception();
-}
-if (execute is String
 && execute == "using_system_gesture") {
 usingSystemGesture();
 throw Exception();
